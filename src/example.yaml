@@ -1,0 +1,109 @@
+basics:
+  name: John Doe
+  label: Software Engineer
+  email: john.doe@example.com
+  phone: (555) 123-4567
+  url: https://johndoe.com
+  summary: Experienced software engineer with a passion for building scalable applications and solving complex problems.
+  location:
+    address: 123 Main Street
+    city: San Francisco
+    region: CA
+    postalCode: 94105
+    countryCode: US
+  profiles:
+    - network: LinkedIn
+      username: johndoe
+      url: https://linkedin.com/in/johndoe
+    - network: GitHub
+      username: johndoe
+      url: https://github.com/johndoe
+
+work:
+  - company: Tech Innovations Inc.
+    position: Senior Software Engineer
+    website: https://techinnovations.com
+    startDate: 2020-01-01
+    endDate: null
+    summary: Lead developer for cloud services team
+    highlights:
+      - Designed and implemented microservices architecture
+      - Reduced system latency by 40%
+      - Mentored junior developers
+  - company: Digital Solutions LLC
+    position: Software Engineer
+    website: https://digitalsolutions.com
+    startDate: 2017-03-15
+    endDate: 2019-12-31
+    summary: Full-stack developer for e-commerce platform
+    highlights:
+      - Developed RESTful APIs
+      - Implemented responsive UI using React
+      - Optimized database queries for improved performance
+
+education:
+  - institution: University of California, Berkeley
+    area: Computer Science
+    studyType: Bachelor
+    startDate: 2013-09-01
+    endDate: 2017-05-15
+    gpa: 3.8
+    courses:
+      - Data Structures and Algorithms
+      - Computer Networks
+      - Database Management Systems
+
+skills:
+  - name: Programming Languages
+    level: Advanced
+    keywords:
+      - JavaScript
+      - Python
+      - Java
+      - Go
+  - name: Web Technologies
+    level: Advanced
+    keywords:
+      - React
+      - Node.js
+      - Express
+      - HTML5
+      - CSS3
+  - name: Database Systems
+    level: Intermediate
+    keywords:
+      - MongoDB
+      - PostgreSQL
+      - Redis
+  - name: DevOps
+    level: Intermediate
+    keywords:
+      - Docker
+      - Kubernetes
+      - AWS
+      - CI/CD
+
+languages:
+  - language: English
+    fluency: Native
+  - language: Spanish
+    fluency: Professional
+
+projects:
+  - name: E-commerce Analytics Dashboard
+    description: A real-time dashboard for tracking sales and customer behavior
+    highlights:
+      - Used React for frontend and Node.js for backend
+      - Implemented real-time data visualization
+    keywords:
+      - React
+      - Node.js
+      - D3.js
+      - MongoDB
+    url: https://github.com/johndoe/ecommerce-dashboard
+
+certificates:
+  - name: AWS Certified Solutions Architect
+    date: 2022-04-10
+    issuer: Amazon Web Services
+    url: https://aws.amazon.com/certification/
