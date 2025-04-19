@@ -1,0 +1,266 @@
+%-------------------------
+% Resume LaTeX Jinja Template
+% Link: https://github.com/aakashks/yaml-resume
+% Created by: Aakash Kumar Singh
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{hyperref}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure generated PDF is machine-readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-2pt}
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \textbf{\small #1} & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]\vspace{-3pt}}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-4pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[nosep,topsep=0pt]\vspace{1.5pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-9pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% adjust look with these
+\linespread{1.0} % Adjust the number as needed - keep 1.0 to 1.1
+\setlength{\parskip}{0pt}  % Adjust space between paragraphs
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape (( basics.name ))} \\ \vspace{1pt}
+    \small 
+    \href{mailto:(( basics.email ))}{\raisebox{-0.1\height}\faEnvelope\ (( basics.email ))}
+    ((% if basics.profiles %))
+    ((% for profile in basics.profiles %))
+    ((% if profile.network == "LinkedIn" %))
+    ~ \href{(( profile.url ))}{\faLinkedin\ (( profile.username ))}
+    ((% elif profile.network == "GitHub" %))
+    ~ \href{(( profile.url ))}{\raisebox{-0.1\height}\faGithub\ (( profile.username ))}
+    ((% elif profile.network == "Kaggle" %))
+    ~ \href{(( profile.url ))}{\faKaggle\ (( profile.username ))}
+    ((% endif %))
+    ((% endfor %))
+    ((% endif %))
+    \vspace{-5pt}
+\end{center}
+
+((% if interests %))
+%-----------INTERESTS-----------
+\section{Interests}
+  \small{(( interests|join(", ") ))}
+\vspace{-5pt}
+((% endif %))
+
+((% if basics.summary %))
+%-----------ABOUT ME-----------
+\section{About Me}
+  \small{(( basics.summary ))}
+\vspace{-5pt}
+((% endif %))
+
+((% if education %))
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    ((% for edu in education %))
+    \resumeSubheading
+      {(( edu.institution ))}{(( edu.startDate )) -- (( edu.endDate if edu.endDate else "Present" ))}
+      {(( edu.studyType )) in (( edu.area ))((% if edu.gpa %)); \textbf{Current CGPA: (( edu.gpa ))}((% endif %))}{(( edu.location ))}
+    ((% endfor %))
+  \resumeSubHeadingListEnd
+\vspace{-5pt}
+((% endif %))
+
+((% if publications %))
+%-----------PUBLICATIONS-----------
+\section{Publications}
+  \resumeSubHeadingListStart
+    ((% for pub in publications %))
+    \resumeSubheading
+      {((% if pub.url %))\href{(( pub.url ))}{\small\parbox[t]{0.85\linewidth}{(( pub.name ))}}((% else %))\small\parbox[t]{0.85\linewidth}{(( pub.name ))}((% endif %))}{(( pub.releaseDate ))}
+      {(( pub.authors | join(", ")))}{(( pub.publisher ))}
+    ((% endfor %))
+  \resumeSubHeadingListEnd
+\vspace{-5pt}
+((% endif %))
+
+((% if work %))
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    ((% for job in work %))
+    \resumeSubheading
+      {(( job.company ))}{(( job.startDate )) -- (( job.endDate if job.endDate else "Present" ))}
+      {(( job.position ))}{(( job.location ))}
+      ((% if job.highlights %))
+      \resumeItemListStart
+        ((% for highlight in job.highlights %))
+        \resumeItem{(( highlight ))}
+        ((% endfor %))
+      \resumeItemListEnd
+      ((% endif %))
+    ((% endfor %))
+  \resumeSubHeadingListEnd
+((% endif %))
+
+((% if projects %))
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+    ((% for project in projects %))
+    \resumeProjectHeading
+        {((% if project.url %))\href{(( project.url ))}{(( project.name ))}((% else %))(( project.name ))((% endif %))((% if project.entity %)) | (( project.entity ))((% endif %))}{(( project.date ))}
+        ((% if project.highlights %))
+        \resumeItemListStart
+          ((% for highlight in project.highlights %))
+          \resumeItem{(( highlight ))}
+          ((% endfor %))
+        \resumeItemListEnd
+        ((% endif %))
+    ((% endfor %))
+    \resumeSubHeadingListEnd
+((% endif %))
+
+((% if awards %))
+%----------- ACHIEVEMENTS -----------
+\section{Achievements}
+\resumeItemListStart
+  ((% for award in awards %))
+  \resumeItem{\textbf{(( award.title ))} - (( award.summary ))} \\
+  ((% endfor %))
+\resumeItemListEnd
+\vspace{3pt}
+((% endif %))
+
+((% if skills %))
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\resumeItemListStart
+  ((% for skill in skills %))
+  \resumeItem{\textbf{(( skill.name )):} (( skill.keywords|join(", ") ))} \\
+  ((% endfor %))
+\resumeItemListEnd
+\vspace{3pt}
+((% endif %))
+
+((% if volunteer %))
+%-----------EXTRACURRICULAR-------------
+\section{Extracurricular Activities}
+    \resumeSubHeadingListStart
+        ((% for activity in volunteer %))
+        \resumeSubheading{(( activity.organization ))}{(( activity.startDate )) -- (( activity.endDate if activity.endDate else "Present" ))}{(( activity.position ))}{(( activity.location ))}
+        ((% if activity.highlights %))
+        \resumeItemListStart
+            ((% for highlight in activity.highlights %))
+            \resumeItem{(( highlight ))}
+            ((% endfor %))
+        \resumeItemListEnd
+        ((% endif %))
+        ((% endfor %))
+    \resumeSubHeadingListEnd
+((% endif %))
+
+((% if courses %))
+%-----------RELEVANT COURSEWORK----------
+\section{Relevant Coursework}
+    \begin{multicols}{4}
+        \begin{itemize}[itemsep=-3pt, parsep=3pt]
+            ((% for course in courses %))
+            \item\small (( course ))
+            ((% endfor %))
+        \end{itemize}
+    \end{multicols}
+((% endif %))
+
+((% if references %))
+\section{References}
+    ((% for reference in references %))
+    \resumeSubHeadingListStart
+        \resumeSubheading{(( reference.name ))}{(( reference.position ))}{(( reference.organization ))}{(( reference.email ))}
+    \resumeSubHeadingListEnd
+    ((% endfor %))
+((% endif %))
+
+\end{document}
